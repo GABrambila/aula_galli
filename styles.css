@@ -14,7 +14,7 @@ header{
 }
 
 .botao-categoria{
-    background-color: #4caf50;
+    background-color: #376139;
     color: #FFF;
     padding: 10px 20px;
     margin: 5px;
@@ -29,3 +29,8 @@ footer{
     color: #FFF;
     
 }
+
+.active{
+    background: #06e219;
+}
+
