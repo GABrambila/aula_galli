@@ -34,3 +34,21 @@ footer{
     background: #06e219;
 }
 
+
+.imagem-item {
+    margin: 10px;
+}
+
+.imagem-item img {
+    max-width: 100%;
+    border-radius: 5px;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
+    max-height: calc(100vh - 200px);
+}
+
+.box-imagens{
+    display: flex;
+    justify-content: center;
+    padding: 20px;
+    flex-wrap: wrap;
+}

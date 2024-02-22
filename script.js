@@ -2,10 +2,10 @@ $(document).ready(function(){
 
     const baseImagens = {
         
-        Todas: ['Todas.jpg', 'Todas1.jpg', 'Todas2.jpg', 'Todas3.jpg'],
-        Animais: ['Animal.jpg', 'Animal1.jpg', 'Animal2.jpg', 'Animal3.jpg'],
-        Cidade: ['Cidade.jpg', 'Cidade1.jpg', 'Cidade2.jpg', 'Cidade3.jpg'],
-        Natureza: ['Natureza.jpg', 'Natureza1.jpg', 'Natureza2.jpg', 'Natureza3.jpg'],
+        todas: ['animal.jpg', 'cidade.jpg', 'imagem.jpg'],
+        animais: ['animal.jpg', 'animal1.jpg', 'animal2.jpg', 'animal3.jpg'],
+        cidade: ['cidade.jpg', 'cidade1.jpg', 'cidade2.jpg', 'cidade3.jpg'],
+        natureza: ['imagem.jpg', 'imagem1.jpg', 'imagem2.jpg', 'imagem3.jpg'],
 
 
     }
@@ -13,10 +13,11 @@ $(document).ready(function(){
        function carregarImagens(categoria){
         const imagens = baseImagens[categoria]; 
         const boxImagens = $('body').find('.box-imagens');
+        boxImagens.empty(); 
 
         imagens.forEach(img => {
             console.log(img); 
-            boxImagens.append('<div> <img src ="imagens/'+img+'" /> </div>')
+            boxImagens.append('<div class="imagem-item"> <img src="img/'+img+'" /></div>')
             
 
         });
@@ -26,7 +27,7 @@ $(document).ready(function(){
 
     $('.botao-categoria').on('click', function(){
         
-       alert($(this).data('categoria'));
+      
 
        $('body').find('.botao-categoria').removeClass('active'); 
 
