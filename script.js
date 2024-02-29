@@ -17,7 +17,7 @@ $(document).ready(function(){
 
         imagens.forEach(img => {
             console.log(img); 
-            boxImagens.append('<div class="imagem-item"> <img src="img/'+img+'" alt="'+img+'" /></div>')
+            boxImagens.append('<div class="imagem-item"><div class="fechar-imagem">X</div><img src="img/'+img+'" alt="'+img+'" /></div>')
             
 
         });
@@ -25,9 +25,7 @@ $(document).ready(function(){
          
        }
 
-    $('.botao-categoria').on('click', function(){
-        
-      
+      $('.botao-categoria').on('click', function(){
 
        $('body').find('.botao-categoria').removeClass('active'); 
 
@@ -70,7 +68,7 @@ $(document).ready(function(){
     function buscaImagens(busca){
        const imagens = $('.box-imagens .imagem-item');
        //console.log(imagens);
-       imagens.each(function(){
+       imagens.each(function(){ 
            const nomeImagem =  $(this).find('img').attr('alt');
            //const imagemVisible = nomeImagem.includes(busca); faz a busca no nome inteiro
            const imagemVisible = nomeImagem.startsWith(busca); //faz a busca somente no inicio do nome 
@@ -85,7 +83,25 @@ $(document).ready(function(){
       const busca = $(this).val(); 
        //alert($(this).val());
        buscaImagens(busca);
-    })
+    });
+
+
+    $('body').on('click', 'img', function(){
+      $(this).css('max-height', '100vh');
+      $(this).parent().find('.fechar-imagem').show();
+      $(this).parent().addClass('imagem-selecionada'); 
+      $(this).parent().addClass('bg-img');
+
+      $('html, body').css({'overflow': 'hidden', 'height': '100%'}); 
+   });
+
+
+   $('body').on('click', '.fechar-imagem', function(){
+      $(this).parent().removeClass('imagem-selecionada'); 
+      $(this).parent().removeClass('bg-img');    
+      $('html, body').css({'overflow': 'auto',"height":"100vh"});  
+      $(this).hide();
+   });
 
 
      carregarImagens('todas');
