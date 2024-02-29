@@ -17,7 +17,7 @@ $(document).ready(function(){
 
         imagens.forEach(img => {
             console.log(img); 
-            boxImagens.append('<div class="imagem-item"> <img src="img/'+img+'" /></div>')
+            boxImagens.append('<div class="imagem-item"> <img src="img/'+img+'" alt="'+img+'" /></div>')
             
 
         });
@@ -37,6 +37,32 @@ $(document).ready(function(){
        carregarImagens(categoria); 
        });
 
+
+
+    function sortImagens(sort){ 
+
+        const imagens = $('.box-imagens .imagem-item');
+        imagens.sort(function (a, b){
+           const imagemA = $(a).find('img').attr('alt');
+           const imagemB = $(b).find('img').attr('alt');           
+           //console.log(imagemA);
+           if(sort == 'asc'){
+            return imagemA.localeCompare(imagemB)
+           }
+           else{
+            return imagemB.localeCompare(imagemA); 
+           }
+           
+        });
+
+        $('body').find('.box-imagens').append(imagens);  
+
+
+    }
+    $('body').on('click', '.botao-ordenar', function () {
+       const sort = $(this).data('sort');
+       sortImagens(sort); 
+    });
 
 
 });
