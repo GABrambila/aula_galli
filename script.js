@@ -65,4 +65,29 @@ $(document).ready(function(){
     });
 
 
+
+
+    function buscaImagens(busca){
+       const imagens = $('.box-imagens .imagem-item');
+       //console.log(imagens);
+       imagens.each(function(){
+           const nomeImagem =  $(this).find('img').attr('alt');
+           //const imagemVisible = nomeImagem.includes(busca); faz a busca no nome inteiro
+           const imagemVisible = nomeImagem.startsWith(busca); //faz a busca somente no inicio do nome 
+           //console.log(imagemVisible);
+           $(this).toggle(imagemVisible);
+
+         
+       });
+    }
+
+    $('#busca-imagens').on('input', function(){
+      const busca = $(this).val(); 
+       //alert($(this).val());
+       buscaImagens(busca);
+    })
+
+
+     carregarImagens('todas');
+
 });
